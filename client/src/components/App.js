@@ -14,6 +14,9 @@ function App() {
       if (response.ok) {
         response.json().then((user) => setUser(user));
       }
+      else {
+        console.log(response)
+      }
     });
   }, []);
 
@@ -24,6 +27,7 @@ function App() {
   function handleLogout() {
     setUser(null);
   }
+  
 
   return (
     <div className="App">

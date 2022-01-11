@@ -15,7 +15,8 @@ function MemberArticles() {
     fetch("/members_only_articles").then((r) => {
       if (r.ok) {
         r.json().then((articles) =>
-          setState({ articles, error: null, status: "resolved" })
+          setState({ articles, error: null, status: "resolved" }),
+          console.log("hitting")
         );
       } else {
         r.json().then((message) =>
@@ -30,8 +31,8 @@ function MemberArticles() {
   if (status === "rejected") return <h1>{error}</h1>;
 
   return (
-    <main>
-      <h2>Member Only Articles</h2>
+    <main >
+      <h2 style={{textAlign: 'center'}}>Member Only Articles</h2>
       {articles.map((article) => (
         <ArticleItem key={article.id} article={article} />
       ))}

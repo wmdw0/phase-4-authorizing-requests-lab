@@ -11,24 +11,30 @@ function Login({ onLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ username }),
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((user) => onLogin(user));
+    })
+    .then((r) => r.json())
+      .then((user) => onLogin(user));
+    // .then((r) => {
+    //   if (r.ok) {
+    //     r.json().then((user) => onLogin(user));
       }
-    });
-  }
+    // });
+  // }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h3>Login With Username</h3>
-      <label htmlFor="username">Username: </label>
+    <form style={{borderRadius: '20px', boxShadow: '0px 6px 18px -9px rgba(0, 0, 0, 0.75)', maxWidth: '50%', marginLeft: '25%', border: '1px transparent', paddingBottom: '25%', marginTop: '30px'}} onSubmit={handleSubmit}>
+      <h3 style={{fontSize: '24px', marginBottom: '10%', textAlign: 'center'}}>Login With Username</h3>
+      <div style={{display: 'flex',maxWidth: '100%', marginLeft: '25%', marginBottom: '20px'}}>
+      <label htmlFor="username" style={{fontSize: '18px', marginLeft: '5%'}}>Username</label>
       <input
+      style={{minWidth: '30%', marginLeft: '5%'}}
         type="text"
         id="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
-      <button type="submit">Login</button>
+      </div>
+      <button style={{display: 'flex', alignItems: 'center', border: '1px transparent',  boxShadow: '0px 6px 18px -9px rgba(0, 0, 0, 0.75)', marginLeft: '45%', fontSize: '12px', padding: '15px 20px', textAlign: 'center', borderRadius: '10px', backgroundColor: 'transparent', color: 'white'}}type="submit">Login</button>
     </form>
   );
 }
